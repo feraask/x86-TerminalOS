@@ -1,0 +1,2 @@
+make dep
+sudo make

@@ -1,0 +1,18 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+sys_call_handler.o: sys_call_handler.S sys_call_handler.h sys_calls.h
+x86_desc.o: x86_desc.S x86_desc.h types.h
+directory.o: directory.c directory.h lib.h types.h filesystem.h
+filesystem.o: filesystem.c filesystem.h types.h lib.h
+i8259.o: i8259.c i8259.h types.h lib.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  keyboard.h terminal.h filesystem.h sys_calls.h pit.h rtc.h \
+  sys_call_handler.h
+keyboard.o: keyboard.c keyboard.h lib.h types.h terminal.h filesystem.h \
+  sys_calls.h x86_desc.h pit.h i8259.h
+lib.o: lib.c lib.h types.h i8259.h x86_desc.h
+pit.o: pit.c pit.h lib.h types.h
+rtc.o: rtc.c rtc.h lib.h types.h
+sys_calls.o: sys_calls.c sys_calls.h x86_desc.h types.h filesystem.h \
+  lib.h pit.h i8259.h rtc.h terminal.h directory.h
+terminal.o: terminal.c terminal.h lib.h types.h filesystem.h sys_calls.h \
+  x86_desc.h pit.h i8259.h
